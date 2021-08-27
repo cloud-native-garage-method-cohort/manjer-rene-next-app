@@ -10,11 +10,13 @@ COPY package*.json ./
 
 # Executes commands
 RUN npm ci
-RUN npm run build
 
 # Copies files from source to destination, in this case the root of the build context
 # into the root of the WORKDIR
 COPY . .
+
+# Build nextjs app
+RUN npm run build
 
 # Document that this container exposes something on port 3000
 EXPOSE 3000
